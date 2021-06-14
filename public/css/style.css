@@ -6853,6 +6853,7 @@ p {
     color: #ccc;
     margin-bottom: .3rem
 }
+
 .btntb {
     font-size: 1.2rem;
     line-height: 1.5;
@@ -6861,6 +6862,7 @@ p {
     white-space: normal;
     transition: all 0.3s
 }
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -10863,9 +10865,9 @@ small.form-text {
     color: #c96
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 750px) {
     .modal-dialog {
-        max-width: 575px
+        max-width: 950px
     }
 }
 

@@ -43,7 +43,7 @@ class ProductoController extends controller
         }
         header('Location:'.URL.'producto/index');
     }
-    public function  delete(){
+    public function  delete($param=null){
         $Id= isset($param[0])? intval($param[0]): 0;
         if ($Id >0) {
             $this->dao->delete($Id);

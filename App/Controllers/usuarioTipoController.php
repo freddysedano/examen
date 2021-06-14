@@ -5,17 +5,17 @@ namespace App\Controllers;
 use Libs\controller;
 use stdClass;
 
-class UnidadController extends controller
+class UsuarioTipoController extends controller
 {
     public function __construct()
     {
-         $this->loadDirectoryTemplate("unidad");
-         $this->loadDAO("unidad");
+         $this->loadDirectoryTemplate("usuarioTipo");
+         $this->loadDAO("usuarioTipo");
     }
     public function index()
     {
         $data = $this->dao-> getAll(true);
-        echo $this->template->render('index',['data'=>$data]);
+        echo $this->template->render('index',['data'=>$data]);//,['data'=>$data]
     }
     public function detail($param=null)
     {
@@ -26,9 +26,8 @@ class UnidadController extends controller
     public function save()
     {
         $obj=new stdClass();
-        $obj->Id= isset( $_POST['Id_unidad'])? intval($_POST['Id_unidad']):0;
+        $obj->Id= isset( $_POST['Id_usuarioTipo'])? intval($_POST['Id_usuarioTipo']):0;
         $obj->Nombre= isset( $_POST['nombre'])? $_POST['nombre']:'';
-        $obj->Descripcion= isset( $_POST['descripcion'])? $_POST['descripcion']:'';
         if (isset( $_POST['estado'])) {
            if($_POST['estado']=='on'){
             $obj->Estado=true;
@@ -41,13 +40,13 @@ class UnidadController extends controller
         }else{
             $this->dao->create($obj);
         }
-        header('Location:'.URL.'unidad/index');
+        header('Location:'.URL.'usuarioTipo');
     }
     public function  delete($param=null){
         $Id= isset($param[0])? intval($param[0]): 0;
         if ($Id >0) {
             $this->dao->delete($Id);
         }
-         header('Location:' . URL . 'unidad/index');
+         header('Location:' . URL . 'usuarioTipo');
     }
 }

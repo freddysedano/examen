@@ -1,7 +1,7 @@
 <?php
 $this->layout('../layouts/layout',
 [
-    'titles'=> 'FBMinimarket | Categorias'
+    'titles'=> 'FBMinimarket | Usuario tipos'
 ]);
 ?>
 <?php $this->push('styles');?>
@@ -11,20 +11,19 @@ $this->layout('../layouts/layout',
 <?php $this->start('contents');?>
 
 <div class="container">
-    <h1>Categorias</h1>
+    <h1>Unidades</h1>
     <div class="row">
         <div class="col-sm-4 form-group">
-            <a is-modal="true" href=" <?=URL . 'categoria/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
+            <a is-modal="true" href=" <?=URL . 'usuarioTipo/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-hover">
-                <thead  class="thead-light">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th style="width:10%;">Id</th>
-                        <th style="width:30%;">Nombre</th>
-                        <th style="width:50%;">Descripcion</th>
+                        <th style="width:10%;">ID</th>
+                        <th style="width:50%;">Nombre</th>
                         <th style="width:10%;"></th>
                     </tr>
                 </thead>
@@ -33,10 +32,9 @@ $this->layout('../layouts/layout',
                     <tr>
                         <td> <?=$row->Id ?></td>
                         <td> <?=$row->Nombre ?></td>
-                        <td> <?=$row->Descripcion ?></td>
                         <td>
-                        <a is-modal="true" href="<?=URL. "categoria/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
-                        <a href="<?=URL. "categoria/delete/{$row->Id}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        <a is-modal="true" href="<?=URL. "usuarioTipo/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
+                        <a href="<?=URL. "usuarioTipo/delete/{$row->Id}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php  endforeach;  ?>
@@ -46,12 +44,12 @@ $this->layout('../layouts/layout',
         <br>
     </div>
 </div>
-<?php $this->stop(); ?>
+<?php $this->end(); ?>
 
 <?php $this->start('myModal') ?>
 <?php
-$title = 'Categoría Detalle - Insertar';
-$size = MUYGRANDE;
+$title = 'Tipo Usuario  Detalle - Insertar';
+$size = GRANDE;
 include MAINPATH . 'app/views/layouts/partials/_areaModalCrud.phtml';
 ?>
 <?php $this->stop() ?>

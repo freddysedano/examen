@@ -3,21 +3,14 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'marca/save'?>" method="post">
-                <input type="hidden" name="Id_marca" value="<?=$data->Id?>">
+            <form action="<?=URL .'usuarioTipo/save'?>" method="post">
+                <input type="hidden" name="Id_usuarioTipo" value="<?=$data->Id?>">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" name="nombre" id="id_nombre" class="form-control"
                                 value="<?=$data->Nombre?>">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <label for="nombre">descripción</label>
-                            <input type="text" name="descripcion" id="id_descripcion" class="form-control"
-                                value="<?=$data->Descripcion?>">
                         </div>
                     </div>
                 </div>

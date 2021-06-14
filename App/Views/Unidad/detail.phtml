@@ -1,19 +1,8 @@
-<?php
-$this->layout('../layouts/layout',
-[
-    'titles'=> 'FBMinimarket | Unidad'
-]);
-?>
-<?php $this->push('styles');?>
-<!-- //link de css  -->
-<?php $this->end(); ?>
 
-<?php $this->start('contents');?>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Unidades - Detalle</h1>
             <form action="<?=URL .'unidad/save'?>" method="post">
                 <input type="hidden" name="Id_unidad" value="<?=$data->Id?>">
                 <div class="row">
@@ -49,8 +38,3 @@ $this->layout('../layouts/layout',
         </div>
     </div>
 </div>
-<?php $this->end(); ?>
-
-<?php $this->push('scripts');?>
-<!-- //link js  -->
-<?php $this->end(); ?>

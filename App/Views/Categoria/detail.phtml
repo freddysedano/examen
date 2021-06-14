@@ -1,19 +1,7 @@
-<?php
-$this->layout('../layouts/layout',
-[
-    'titles'=> 'FBMinimarket | Categoria'
-]);
-?>
-<?php $this->push('styles');?>
-<!-- //link de css  -->
-<?php $this->end(); ?>
-
-<?php $this->start('contents');?>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1>Categorias - Detalle</h1>
             <form action="<?=URL .'categoria/save'?>" method="post">
                 <input type="hidden" name="Id_categoria" value="<?=$data->Id?>">
                 <div class="row">
@@ -63,8 +51,3 @@ $this->layout('../layouts/layout',
         </div>
     </div>
 </div>
-<?php $this->end(); ?>
-
-<?php $this->push('scripts');?>
-<!-- //link js  -->
-<?php $this->end(); ?>

@@ -14,7 +14,7 @@ $this->layout('../layouts/layout',
     <h1>Clientes</h1>
     <div class="row">
         <div class="col-sm-4 form-group">
-            <a href=" <?=URL . 'cliente/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
+            <a is-modal="true" href=" <?=URL . 'cliente/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
         </div>
     </div>
     <div class="row">
@@ -43,7 +43,7 @@ $this->layout('../layouts/layout',
                         <td> <?=$row->CreditoLimite ?></td>
                         <td> <?=$row->Ruc ?></td>
                         <td>
-                        <a href="<?=URL. "cliente/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
+                        <a is-modal="true" href="<?=URL. "cliente/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
                         <a href="<?=URL. "cliente/delete/{$row->Id}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
@@ -56,6 +56,16 @@ $this->layout('../layouts/layout',
 </div>
 <?php $this->end(); ?>
 
+
+<?php $this->start('myModal') ?>
+<?php
+$title = 'Cliente Detalle - Insertar';
+$size = MUYGRANDE;
+include MAINPATH . 'app/views/layouts/partials/_areaModalCrud.phtml';
+?>
+<?php $this->stop() ?>
+
+
 <?php $this->push('scripts');?>
-<!-- //link js  -->
+  <script src="<?=URL.'js/scripts/modal_crud.js'?>"></script>
 <?php $this->end(); ?>

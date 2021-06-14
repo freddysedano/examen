@@ -2,8 +2,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'cliente/save'?>" method="post">
-                <input type="hidden" name="Id_cliente" value="<?=$data->Id?>">
+            <form action="<?=URL .'usuario/save'?>" method="post">
+                <input type="hidden" name="Id_Usuario" value="<?=$data->Id?>">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="tipo">Tipo de Cliente</label>
+                            <input type="text" name="tipo" id="id_tipo" class="form-control"
+                                value="<?=$data->IdTipo?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -37,16 +48,39 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="creditolimite">creditolimite</label>
-                            <input type="text" name="creditolimite" id="id_descripcion" class="form-control"
-                                value="<?=$data->CreditoLimite?>">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" name="usuario" id="id_usuario" class="form-control"
+                                value="<?=$data->Usuario?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="ruc">ruc</label>
-                            <input type="text" name="ruc" id="id_descripcion" class="form-control"
-                                value="<?=$data->Ruc?>">
+                            <label for="clave">Clave</label>
+                            <input type="text" name="clave" id="id_descripcion" class="form-control"
+                                value="<?=$data->Clave?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" name="correo" id="id_nombre" class="form-control"
+                                value="<?=$data->Correo?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="fechacreacion">FechaCreacion</label>
+                            <input type="text" name="fechacreacion" id="id_usuario" class="form-control"
+                                value="<?=$data->FCreacion?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="FEliminacion">FEliminacion</label>
+                            <input type="text" name="FEliminacion" id="id_descripcion" class="form-control"
+                                value="<?=$data->FEliminacion?>">
                         </div>
                     </div>
                 </div>
