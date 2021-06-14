@@ -1,0 +1,93 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Cliente'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->start('contents');?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Clientes - Detalle</h1>
+            <form action="<?=URL .'cliente/save'?>" method="post">
+                <input type="hidden" name="Id_cliente" value="<?=$data->Id?>">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="nombres">Nombres</label>
+                            <input type="text" name="nombres" id="id_nombre" class="form-control"
+                                value="<?=$data->Nombres?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="apellidos">apellidos</label>
+                            <input type="text" name="apellidos" id="id_descripcion" class="form-control"
+                                value="<?=$data->Apellidos?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="direccion">direccion</label>
+                            <input type="text" name="direccion" id="id_descripcion" class="form-control"
+                                value="<?=$data->Direccion?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="telf">Telefono</label>
+                            <input type="text" name="telf" id="id_nombre" class="form-control"
+                                value="<?=$data->Telf?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="creditolimite">creditolimite</label>
+                            <input type="text" name="creditolimite" id="id_descripcion" class="form-control"
+                                value="<?=$data->CreditoLimite?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="ruc">ruc</label>
+                            <input type="text" name="ruc" id="id_descripcion" class="form-control"
+                                value="<?=$data->Ruc?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
+                            <?= ($data->Estado == 1) ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="exampleCheck1">Estado</label>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                    <div class="col-sm-8">
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Guardar </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>

@@ -1,0 +1,116 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Producto'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->start('contents');?>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Producto - Detalle</h1>
+            <form action="<?=URL .'producto/save'?>" method="post">
+                <input type="hidden" name="Id_producto" value="<?=$data->data->Id?>">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div>Selecciona Marca : <select name="idmarca" id="idmarca">
+                                <?php foreach($data->dataMarca as $clave => $valor) { ?>
+                                <option value="<?php echo $valor->idmarca; ?>"><?php echo $valor->nombre; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>Selecciona Categoria : <select name="idcateg" id="idcateg">
+                                <?php foreach($data->dataCateg as $clave => $valor) { ?>
+                                <option value="<?php echo $valor->idcateg; ?>"><?php echo $valor->nombre; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>Selecciona Unidad : <select name="idunidad" id="idunidad">
+                                <?php foreach($data->dataUnidad as $clave => $valor) { ?>
+                                <option value="<?php echo $valor->idunidad; ?>"><?php echo $valor->nombre; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="nombre">nombre</label>
+                            <input type="text" name="nombre" id="id_nombre" class="form-control"
+                                value="<?=$data->data->nombre?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="descripcion">descripcion</label>
+                            <input type="text" name="descripcion" id="id_descripcion" class="form-control"
+                                value="<?=$data->data->descripcion?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="preciocosto">preciocosto</label>
+                            <input type="text" name="preciocosto" id="id_descripcion" class="form-control"
+                                value="<?=$data->data->preciocosto?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="precioventa">precioventa</label>
+                            <input type="text" name="precioventa" id="id_descripcion" class="form-control"
+                                value="<?=$data->data->precioventa?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="stock">stock</label>
+                            <input type="text" name="stock" id="id_descripcion" class="form-control"
+                                value="<?=$data->data->stock?>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="stockminimo">stockminimo</label>
+                            <input type="text" name="stockminimo" id="id_descripcion" class="form-control"
+                                value="<?=$data->data->stockminimo?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
+                                <?= ($data->data->estado == 1) ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="exampleCheck1">Estado</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Guardar </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>

@@ -1,0 +1,61 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Productos'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->start('contents');?>
+
+<div class="container">
+    <h1>Producto</h1>
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <a href=" <?=URL . 'producto/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:5%;">ID</th>
+                        <th style="width:15%;">Marca</th>
+                        <th style="width:20%;">Categoria</th>
+                        <th style="width:15%;">Unidad</th>
+                        <th style="width:10%;">Nombre</th>
+                        <th style="width:10%;">Descripcion</th>
+                        <th style="width:10%;">Precio costo</th>
+                        <th style="width:10%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php  foreach($data as $row):  ?>
+                    <tr>
+                        <td> <?=$row->Id ?></td>
+                        <td> <?=$row->marca ?></td>
+                        <td> <?=$row->categoria ?></td>
+                        <td> <?=$row->unidad ?></td>
+                        <td> <?=$row->Nombre ?></td>
+                        <td> <?=$row->Descripcion ?></td>
+                        <td> <?=$row->Preciocosto ?></td>
+                        <td>
+                        <a href="<?=URL. "producto/detail/{$row->idproducto}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
+                        <a href="<?=URL. "producto/delete/{$row->idproducto}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <?php  endforeach;  ?>
+                </tbody>
+            </table>
+        </div>
+        <br>
+    </div>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>

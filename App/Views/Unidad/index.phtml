@@ -1,0 +1,51 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Unidades'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->start('contents');?>
+
+<div class="container">
+    <h1>Unidades</h1>
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <a href=" <?=URL . 'unidad/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:10%;">ID</th>
+                        <th style="width:50%;">Nombre</th>
+                        <th style="width:10%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php  foreach($data as $row):  ?>
+                    <tr>
+                        <td> <?=$row->Id ?></td>
+                        <td> <?=$row->Nombre ?></td>
+                        <td>
+                        <a href="<?=URL. "unidad/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
+                        <a href="<?=URL. "unidad/delete/{$row->Id}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <?php  endforeach;  ?>
+                </tbody>
+            </table>
+        </div>
+        <br>
+    </div>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>

@@ -1,0 +1,61 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Clientes'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->start('contents');?>
+
+<div class="container">
+    <h1>Clientes</h1>
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <a href=" <?=URL . 'cliente/detail'?>" class="btn btn-primary btn-block">Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:5%;">ID</th>
+                        <th style="width:15%;">Nombre</th>
+                        <th style="width:20%;">Apellidos</th>
+                        <th style="width:15%;">Direccion</th>
+                        <th style="width:10%;">Telefono</th>
+                        <th style="width:10%;">credito Limite</th>
+                        <th style="width:10%;">Ruc</th>
+                        <th style="width:10%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php  foreach($data as $row):  ?>
+                    <tr>
+                        <td> <?=$row->Id ?></td>
+                        <td> <?=$row->Nombres ?></td>
+                        <td> <?=$row->Apellidos ?></td>
+                        <td> <?=$row->Direccion ?></td>
+                        <td> <?=$row->Telf ?></td>
+                        <td> <?=$row->CreditoLimite ?></td>
+                        <td> <?=$row->Ruc ?></td>
+                        <td>
+                        <a href="<?=URL. "cliente/detail/{$row->Id}" ?>" class="btntb btn-success btn-sm"> <i class="fa fa-pencil"></i></a>
+                        <a href="<?=URL. "cliente/delete/{$row->Id}" ?>" class="btntb btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <?php  endforeach;  ?>
+                </tbody>
+            </table>
+        </div>
+        <br>
+    </div>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>

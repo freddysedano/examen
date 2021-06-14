@@ -1,0 +1,19 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Inicio'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->push('contents');?>
+<?php require_once MAINPATH.'app/views/layouts/partials/_main.phtml' ?>
+<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+<?php require_once MAINPATH.'app/views/layouts/partials/_mobile-menu.phtml' ?>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>
