@@ -43,7 +43,7 @@ class ClienteController extends controller
         if($obj->Id>0) {
             $this->dao->update($obj);
         }else{
-            $this->dao->create($obj);
+            $idimg=$this->dao->create($obj);
         }
         header('Location:'.URL.'cliente/index');
     }

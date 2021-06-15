@@ -46,7 +46,9 @@ class ClienteDAO extends Dao
         $model->CreditoLimite=$obj->CreditoLimite;
         $model->Ruc=$obj->Ruc;
         $model->Estado=$obj->Estado;
-        return $model->save();//ejecutamos
+        $model->save();
+        $idimg=$model->Id;
+        return $idimg;//ejecutamos
     }
     public function update($obj)
     {

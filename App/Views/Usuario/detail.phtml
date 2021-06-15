@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'usuario/save'?>" method="post">
+            <form action="<?=URL .'usuario/save'?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="Id_Usuario" value="<?=$data->Id?>">
                 <div class="row">
                     <div class="col-sm-4">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group form-check">
                             <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
                             <?= ($data->Estado == 1) ? 'checked' : '' ?>>
@@ -93,8 +93,17 @@
                         </div>
                     </div>
                     <div class="form-group ">
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                     </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 form-group">
+                    <label for="my-input">Seleccione una Imagen</label> <br>
+                    <input id="my-input" type="file" name="imagen">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                    <img src="<?= URL.'images/Usuarios/Usuarios_'.$data->Id.'.png'?>" alt=""  width="150" height="200" srcset="">
                     </div>
                 </div>
                 <div class="row">

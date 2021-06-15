@@ -54,7 +54,9 @@ class UsuarioDAO extends Dao
         $model->FCreacion=$obj->FCreacion;
         $model->FEliminacion=$obj->FEliminacion;
         $model->Estado=$obj->Estado;
-        return $model->save();//ejecutamos
+        $model->save();
+        $idimg=$model->Id;
+        return $idimg;//ejecutamos
     }
     public function update($obj)
     {

@@ -35,32 +35,6 @@ class CategoriaController extends controller
             $obj->Estado=true;
         }else{$obj->Estado=false;}
         }else{$obj->Estado=false;}
-        // if(isset($_FILES['archivo']['name'])){
-        //     // file name
-        //     $filename = $_FILES['archivo']['name'];
-
-        //     // Location
-        //     $location = MAINPATH .'/public/'.$filename.'/';
-
-        //     // file extension
-        //     $file_extension = pathinfo($location, PATHINFO_EXTENSION);
-        //     $file_extension = strtolower($file_extension);
-
-        //     // Valid image extensions
-        //     $valid_ext = array("pdf","doc","docx","jpg","png","jpeg");
-
-        //     $response = 0;
-        //     if(in_array($file_extension,$valid_ext)){
-        //         // Upload file
-        //         if(move_uploaded_file($_FILES['archivo']['tmp_name'],$location)){
-        //             $response = 1;
-        //         }
-        //     }
-
-        //     echo $response;
-        //     exit;
-        // }
-
 
         // if ($_FILES ["archivo"] ["error"]>0) {
         // echo "Error al cargar archivo";
@@ -88,7 +62,21 @@ class CategoriaController extends controller
         if($obj->Id>0) {
             // $this->dao->update($obj);
         }else{
-            // $this->dao->create($obj);
+            $idimg=$this->dao->create($obj);
+            $imagen = $_FILES['imagen']['name'];
+            $nombre = $_POST['titulo'];
+
+            if(isset($imagen) && $imagen != ""){
+                $tipo = $_FILES['imagen']['type'];
+                $temp  = $_FILES['imagen']['tmp_name'];
+
+            if( !((strpos($tipo,'gif') || strpos($tipo,'jpg')|| strpos($tipo,'png')|| strpos($tipo,'jpeg') ))){
+                $_SESSION['mensaje'] = 'solo se permite archivos jpeg, gif, webp';
+                $_SESSION['tipo'] = 'danger';
+            }else{
+                move_uploaded_file($temp, ROOT.'/images/Productos/'.$nombre.'_'.$idimg.'.'.substr($tipo,6,4));
+            }
+            }
         }
         header('Location:'.URL.'categoria/index');
     }

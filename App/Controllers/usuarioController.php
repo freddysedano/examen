@@ -44,8 +44,10 @@ class UsuarioController extends controller
         }else{$obj->Estado=false;}
         if($obj->Id>0) {
             $this->dao->update($obj);
+            $this->Createimg($obj->Id,'Usuarios');
         }else{
-            $this->dao->create($obj);
+            $idimg=$this->dao->create($obj);
+            $this->Createimg($idimg,'Usuarios');
         }
         header('Location:'.URL.'Usuario');
     }
