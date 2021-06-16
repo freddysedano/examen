@@ -95,7 +95,10 @@ class ProductoController extends controller
         $gump=new GUMP('es');
         $gump->validation_rules([
             'nombre'=>'required|max_len,10',
-            'Descripcion'=>'min_len,5|max_len,30'
+            'descripcion'=>'min_len,5|max_len,100',
+            'preciocosto'=>'required|max_len,8',
+            'precioventa'=>'required|max_len,8',
+            'stock'=>'required',
         ]);
         $valid_data=$gump->run($datos);
         if ($gump->errors()) {

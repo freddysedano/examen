@@ -91,8 +91,12 @@ class UsuarioController extends controller
     public function  validate($datos){
         $gump=new GUMP('es');
         $gump->validation_rules([
-            'nombres'=>'required|max_len,10',
-            'Descripcion'=>'min_len,5|max_len,30'
+            'nombres'=>'required|max_len,20',
+            'direccion'=>'min_len,5|max_len,50',
+            'usuario'=>'required|alpha_numeric|max_len,100|min_len,6',
+            'clave'=>'required|max_len,100|min_len,6',
+            'direccion'=>'required|valid_email',
+            'correo'=>'required|max_len,50',
         ]);
         $valid_data=$gump->run($datos);
         if ($gump->errors()) {

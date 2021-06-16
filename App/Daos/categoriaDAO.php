@@ -39,8 +39,8 @@ class CategoriaDAO extends Dao
         $model->Descripcion=$obj->Descripcion;
         $model->Estado=$obj->Estado;
         $model->save();
-        $idimg=$model->Id;
-        return $idimg;//ejecutamos
+        $model->Idguardado=$model->Id;
+        return $model;//ejecutamos
     }
     public function update($obj)
     {
