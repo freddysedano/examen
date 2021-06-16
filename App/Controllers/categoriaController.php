@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use GUMP;
 use Libs\controller;
 use stdClass;
 
@@ -12,10 +13,10 @@ class CategoriaController extends controller
          $this->loadDirectoryTemplate("categoria");
          $this->loadDAO("categoria");
     }
-    public function index()
-    {
-        $data = $this->dao-> getAll(true);
-        echo $this->template->render('index',['data'=>$data]);//,['data'=>$data]
+    public function index($param=null)
+    {   $estado= isset($param[0])? ($param[0]): true;
+        $data = $this->dao-> getAll($estado);
+        echo $this->template->render('index',['data'=>$data]);
     }
     public function detail($param=null)
     {
@@ -25,60 +26,46 @@ class CategoriaController extends controller
     }
     public function save()
     {
-        $obj=new stdClass();
-        $obj->Id= isset( $_POST['Id_categoria'])? intval($_POST['Id_categoria']):0;
-        $obj->Nombre= isset( $_POST['nombre'])? $_POST['nombre']:'';
-        $obj->Descripcion= isset( $_POST['descripcion'])? $_POST['descripcion']:'';
-        // $obj->estado= isset( $_POST['estado'])? $_POST['estado']:false;
-        if (isset( $_POST['estado'])) {
-           if($_POST['estado']=='on'){
-            $obj->Estado=true;
-        }else{$obj->Estado=false;}
-        }else{$obj->Estado=false;}
+        $valid_data= $this->validate($_POST);
+        $status= $valid_data['status'];
+        $data=$valid_data['data'];
 
-        // if ($_FILES ["archivo"] ["error"]>0) {
-        // echo "Error al cargar archivo";
-        // }else{
-        //     $permitidos = array ("image/gif", "image/jpg", "image/png", "application/pdf") ;
-        //     $limite_kb = 400;
-        //     if (in_array($_FILES["archivo"] ["type"], $permitidos) && $_FILES["archivo" ] ["size"] <= $limite_kb * 1024){
-        //         $ruta= MAINPATH .'/public/'.$obj->Id.'/';
-        //         $archivo=$ruta.$_FILES["archivo"]["name"];
-        //         if(!file_exists($ruta)){
-        //             mkdir($ruta);
-        //         }
-        //         if(!file_exists($archivo)){
-        //             $resultado= @move_uploaded_file($_FILES["archivo"]["tmp_name"],$archivo);
-        //             if ($resultado) {
-        //                 echo "archivo guardado";
-        //             }else{echo "Error al guardad archivo";}
-        //         }else{
-        //             echo "Archivo ya existe";
-        //         }
-        //     }else {
-        //     echo "Archive no permitido o excede el tamano";
-        //     }
-        // }
-        if($obj->Id>0) {
-            // $this->dao->update($obj);
-        }else{
-            $idimg=$this->dao->create($obj);
-            $imagen = $_FILES['imagen']['name'];
-            $nombre = $_POST['titulo'];
-
-            if(isset($imagen) && $imagen != ""){
-                $tipo = $_FILES['imagen']['type'];
-                $temp  = $_FILES['imagen']['tmp_name'];
-
-            if( !((strpos($tipo,'gif') || strpos($tipo,'jpg')|| strpos($tipo,'png')|| strpos($tipo,'jpeg') ))){
-                $_SESSION['mensaje'] = 'solo se permite archivos jpeg, gif, webp';
-                $_SESSION['tipo'] = 'danger';
+        if ($status==true) {
+            $obj=new stdClass();
+            $obj->Id= isset( $_POST['Id_categoria'])? intval($_POST['Id_categoria']):0;
+            $obj->Nombre= isset( $_POST['nombre'])? $_POST['nombre']:'';
+            $obj->Descripcion= isset( $_POST['descripcion'])? $_POST['descripcion']:'';
+            // $obj->estado= isset( $_POST['estado'])? $_POST['estado']:false;
+            if (isset( $_POST['estado'])) {
+            if($_POST['estado']=='on'){
+                $obj->Estado=true;
+            }else{$obj->Estado=false;}
+            }else{$obj->Estado=false;}
+            if($obj->Id>0) {
+                $rpta=$this->dao->update($obj);
             }else{
-                move_uploaded_file($temp, ROOT.'/images/Productos/'.$nombre.'_'.$idimg.'.'.substr($tipo,6,4));
+                $rpta=$this->dao->create($obj);
             }
+            if ($rpta) {
+                $response=[
+                    'success'=> 1,
+                    'message'=>'Categoria guardada correctamente',
+                    'redirection'=> URL.'categoria/index'
+                ];
+            }else{$response=[
+                    'success'=> 0,
+                    'message'=>'Error al guardar los datos',
+                    'redirection'=> ''
+                ];
             }
+        }else{
+            $response=[
+                    'success'=> -1,
+                    'message'=> $data,
+                    'redirection'=> ''
+                ];
         }
-        header('Location:'.URL.'categoria/index');
+        echo  json_encode($response);
     }
     public function  delete($param=null){
         $Id= isset($param[0])? intval($param[0]): 0;
@@ -86,5 +73,25 @@ class CategoriaController extends controller
             $this->dao->delete($Id);
         }
          header('Location:' . URL . 'categoria/index');
+    }
+    public function  validate($datos){
+        $gump=new GUMP('es');
+        $gump->validation_rules([
+            'nombre'=>'required|max_len,30|min_len,5',
+            'descripcion'=>'min_len,10|max_len,100'
+        ]);
+        $valid_data=$gump->run($datos);
+        if ($gump->errors()) {
+            $response=[
+                'status'=> false,
+                'data'=>$gump->get_errors_array()
+            ];
+        }else{
+            $response=[
+                'status'=> true,
+                'data'=>$valid_data
+            ];
+        }
+        return $response;
     }
 }

@@ -19,6 +19,8 @@ class controller {
     public function loadDAO(string $daoname) {
         $classDao="App\\Daos\\".$daoname. "DAO";
         $this->dao=new $classDao();
+        $da=$this->dao;
+        return $da;
     }
 
     public function Createimg($idimg,$nombre) {

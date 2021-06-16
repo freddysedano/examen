@@ -1,31 +1,36 @@
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'producto/save'?>" method="post">
-                <input type="hidden" name="Id_producto" value="<?=$data->data->Id?>">
+            <form id="myForm" action="<?=URL .'producto/save'?>" method="post">
+                <input type="hidden" name="Id_producto" value="<?=$data->producto->Id?>">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div>Selecciona Marca : <select name="idmarca" id="idmarca">
-                                <?php foreach($data->dataMarca as $clave => $valor) { ?>
-                                <option value="<?php echo $valor->idmarca; ?>"><?php echo $valor->nombre; ?></option>
-                                <?php } ?>
+                        <div class="form-group">
+                            <label for="idmarca">Selecciona Marca : </label>
+                            <select name="idmarca" id="idmarca" class="form-control">
+                                <?php foreach($data->marcas as $clave => $valor):?>
+                                <option value="<?php echo $valor->Id; ?>" <?=($valor->Id==$data->producto->IdMarca)? 'selected': ''?>><?php echo $valor->Nombre; ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div>Selecciona Categoria : <select name="idcateg" id="idcateg">
-                                <?php foreach($data->dataCateg as $clave => $valor) { ?>
-                                <option value="<?php echo $valor->idcateg; ?>"><?php echo $valor->nombre; ?></option>
-                                <?php } ?>
+                        <div class="form-group">
+                            <label for="idcateg">Selecciona Categoria : </label>
+                            <select name="idcateg" id="idcateg" class="form-control">
+                                <?php foreach($data->categoria as $clave => $valor):?>
+                                <option value="<?php echo $valor->Id; ?>" <?=($valor->Id==$data->producto->IdCategoria)? 'selected': ''?>><?php echo $valor->Nombre; ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div>Selecciona Unidad : <select name="idunidad" id="idunidad">
-                                <?php foreach($data->dataUnidad as $clave => $valor) { ?>
-                                <option value="<?php echo $valor->idunidad; ?>"><?php echo $valor->nombre; ?></option>
-                                <?php } ?>
+                        <div class="form-group">
+                            <label for="idunidad">Selecciona Unidad :  </label>
+                            <select name="idunidad" id="idunidad" class="form-control">
+                                <?php foreach($data->unidades as $clave => $valor):?>
+                                <option value="<?php echo $valor->Id; ?>" <?=($valor->Id==$data->producto->IdUnidad)? 'selected': ''?>><?php echo $valor->Nombre; ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                     </div>
@@ -35,21 +40,21 @@
                         <div class="form-group">
                             <label for="nombre">nombre</label>
                             <input type="text" name="nombre" id="id_nombre" class="form-control"
-                                value="<?=$data->data->nombre?>">
+                                value="<?=$data->producto->Nombre?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="descripcion">descripcion</label>
                             <input type="text" name="descripcion" id="id_descripcion" class="form-control"
-                                value="<?=$data->data->descripcion?>">
+                                value="<?=$data->producto->Descripcion?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="preciocosto">preciocosto</label>
                             <input type="text" name="preciocosto" id="id_descripcion" class="form-control"
-                                value="<?=$data->data->preciocosto?>">
+                                value="<?=$data->producto->PrecioCosto?>">
                         </div>
                     </div>
                 </div>
@@ -58,21 +63,21 @@
                         <div class="form-group">
                             <label for="precioventa">precioventa</label>
                             <input type="text" name="precioventa" id="id_descripcion" class="form-control"
-                                value="<?=$data->data->precioventa?>">
+                                value="<?=$data->producto->Precioventa?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="stock">stock</label>
                             <input type="text" name="stock" id="id_descripcion" class="form-control"
-                                value="<?=$data->data->stock?>">
+                                value="<?=$data->producto->Stock?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="stockminimo">stockminimo</label>
                             <input type="text" name="stockminimo" id="id_descripcion" class="form-control"
-                                value="<?=$data->data->stockminimo?>">
+                                value="<?=$data->producto->StockMinimo?>">
                         </div>
                     </div>
                 </div>
@@ -80,11 +85,25 @@
                     <div class="col-sm-4">
                         <div class="form-group form-check">
                             <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
-                                <?= ($data->data->estado == 1) ? 'checked' : '' ?>>
+                                <?= ($data->producto->Estado == 1) ? 'checked' : '' ?>>
                             <label class="form-check-label" for="exampleCheck1">Estado</label>
                         </div>
                     </div>
                     <div class="col-sm-4">
+                        <div class="" id="mis_errores">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 form-group">
+                        <label for="my-input">Seleccione una Imagen</label> <br>
+                        <input id="my-input" type="file" name="imagen">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                      <?php if ($data->producto->Id>0) {?>
+                          <img src="<?= URL.'images/Usuarios/Usuarios_'.$data->producto->Id.'.png'?>" alt="" width="150"
+                            height="200" srcset="">
+                      <?php }?>
                     </div>
                 </div>
                 <div class="row">

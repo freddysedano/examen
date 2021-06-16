@@ -80,6 +80,13 @@ img {
     height: auto
 }
 
+.imgadmin {
+    display: block;
+    margin-left: 20%;
+    max-width: 50%;
+    height: auto
+}
+
 .bg-light {
     background-color: #f8f8f8 !important
 }
@@ -6855,7 +6862,7 @@ p {
 }
 
 .btntb {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     line-height: 1.5;
     letter-spacing: -.01em;
     border-radius: 2;
@@ -6869,10 +6876,10 @@ p {
     justify-content: center;
     text-align: center;
     padding: .85rem 1.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.5;
     letter-spacing: -.01em;
-    border-radius: 0;
+    border-radius: 2;
     white-space: normal;
     transition: all 0.3s
 }

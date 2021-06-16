@@ -1,15 +1,17 @@
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'usuario/save'?>" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="Id_Usuario" value="<?=$data->Id?>">
+            <form id="myForm" action="<?=URL .'usuario/save'?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id_Usuario" value="<?=$data->data->Id?>">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="tipo">Tipo de Cliente</label>
-                            <input type="text" name="tipo" id="id_tipo" class="form-control"
-                                value="<?=$data->IdTipo?>">
+                            <select name="tipo" id="id_tipo" class="form-control">
+                                <?php foreach($data->data1 as $clave => $valor):?>
+                                <option value="<?php echo $valor->Id; ?>" <?=($valor->Id==$data->data->IdTipo)? 'selected': ''?>><?php echo $valor->Nombre; ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -20,21 +22,21 @@
                         <div class="form-group">
                             <label for="nombres">Nombres</label>
                             <input type="text" name="nombres" id="id_nombre" class="form-control"
-                                value="<?=$data->Nombres?>">
+                                value="<?=$data->data->Nombres?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="apellidos">apellidos</label>
                             <input type="text" name="apellidos" id="id_descripcion" class="form-control"
-                                value="<?=$data->Apellidos?>">
+                                value="<?=$data->data->Apellidos?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="direccion">direccion</label>
                             <input type="text" name="direccion" id="id_descripcion" class="form-control"
-                                value="<?=$data->Direccion?>">
+                                value="<?=$data->data->Direccion?>">
                         </div>
                     </div>
                 </div>
@@ -42,22 +44,21 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="telf">Telefono</label>
-                            <input type="text" name="telf" id="id_nombre" class="form-control"
-                                value="<?=$data->Telf?>">
+                            <input type="text" name="telf" id="id_nombre" class="form-control" value="<?=$data->data->Telf?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
                             <input type="text" name="usuario" id="id_usuario" class="form-control"
-                                value="<?=$data->Usuario?>">
+                                value="<?=$data->data->Usuario?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="clave">Clave</label>
                             <input type="text" name="clave" id="id_descripcion" class="form-control"
-                                value="<?=$data->Clave?>">
+                                value="<?=$data->data->Clave?>">
                         </div>
                     </div>
                 </div>
@@ -66,21 +67,21 @@
                         <div class="form-group">
                             <label for="correo">Correo</label>
                             <input type="text" name="correo" id="id_nombre" class="form-control"
-                                value="<?=$data->Correo?>">
+                                value="<?=$data->data->Correo?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="fechacreacion">FechaCreacion</label>
                             <input type="text" name="fechacreacion" id="id_usuario" class="form-control"
-                                value="<?=$data->FCreacion?>">
+                                value="<?=$data->data->FCreacion?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="FEliminacion">FEliminacion</label>
                             <input type="text" name="FEliminacion" id="id_descripcion" class="form-control"
-                                value="<?=$data->FEliminacion?>">
+                                value="<?=$data->data->FEliminacion?>">
                         </div>
                     </div>
                 </div>
@@ -88,22 +89,25 @@
                     <div class="col-sm-6">
                         <div class="form-group form-check">
                             <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
-                            <?= ($data->Estado == 1) ? 'checked' : '' ?>>
+                                <?= ($data->data->Estado == 1) ? 'checked' : '' ?>>
                             <label class="form-check-label" for="exampleCheck1">Estado</label>
                         </div>
                     </div>
-                    <div class="form-group ">
-                    <div class="col-sm-6">
-                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="" id="mis_errores">
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-8 form-group">
-                    <label for="my-input">Seleccione una Imagen</label> <br>
-                    <input id="my-input" type="file" name="imagen">
+                        <label for="my-input">Seleccione una Imagen</label> <br>
+                        <input id="my-input" type="file" name="imagen">
                     </div>
                     <div class="col-sm-4 form-group">
-                    <img src="<?= URL.'images/Usuarios/Usuarios_'.$data->Id.'.png'?>" alt=""  width="150" height="200" srcset="">
+                      <?php if ($data->data->Id>0) {?>
+                          <img src="<?= URL.'images/Usuarios/Usuarios_'.$data->data->Id.'.png'?>" alt="" width="150"
+                            height="200" srcset="">
+                      <?php }?>
                     </div>
                 </div>
                 <div class="row">

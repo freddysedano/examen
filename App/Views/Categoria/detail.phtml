@@ -1,14 +1,13 @@
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'categoria/save'?>" method="post" enctype="multipart/form-data">
+            <form id="myForm" action="<?=URL .'categoria/save'?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="Id_categoria" value="<?=$data->Id?>">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" Id="Id_nombre" class="form-control"
+                            <input type="text" name="nombre" Id="Id_nombre" class="form-control" required
                                 value="<?=$data->Nombre?>">
                         </div>
                     </div>
@@ -21,32 +20,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group form-check">
+                    <div class="col-sm-4 form-group">
+                        <div class=" form-check">
                             <input type="checkbox" name="estado" Id="Id_estado" class="form-check-input"
                                 <?= ($data->Estado == 1) ? 'checked' : '' ?>>
-                            <label class="form-check-label" for="exampleCheck1">Estado</label>
+                                <label class="form-check-label" for="estado">Estado</label>
                         </div>
                     </div>
-                    <div class="form-group ">
-                        <div class="col-sm-8">
+                    <div class="col-sm-8">
+                        <div class="" id="mis_errores">
                         </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="form-group">
-                    <label for="my-input">Seleccione una Imagen</label>
-                    <input id="my-input" type="file" name="imagen">
-                    </div>
-                    <div class="form-group">
-                    <label for="my-input">Titulo de la Imagen</label>
-                    <input id="my-input" class="form-control" type="text" name="titulo">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <button type="submit"  value="Guardar"  class="btn btn-primary btn-block">Guardar </button>
+                            <button type="submit" value="Guardar" class="btn btn-primary btn-block">Guardar </button>
                         </div>
                     </div>
                 </div>

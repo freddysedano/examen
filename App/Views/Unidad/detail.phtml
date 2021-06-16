@@ -1,12 +1,10 @@
-
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <form action="<?=URL .'unidad/save'?>" method="post">
+            <form id="myForm" action="<?=URL .'unidad/save'?>" method="post">
                 <input type="hidden" name="Id_unidad" value="<?=$data->Id?>">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-8">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" name="nombre" id="id_nombre" class="form-control"
@@ -18,13 +16,13 @@
                     <div class="col-sm-4">
                         <div class="form-group form-check">
                             <input type="checkbox" name="estado" id="id_estado" class="form-check-input"
-                            <?= ($data->Estado == 1) ? 'checked' : '' ?>>
+                                <?= ($data->Estado == 1) ? 'checked' : '' ?>>
                             <label class="form-check-label" for="exampleCheck1">Estado</label>
                         </div>
                     </div>
-                    <div class="form-group ">
                     <div class="col-sm-8">
-                    </div>
+                        <div class="" id="mis_errores">
+                        </div>
                     </div>
                 </div>
                 <div class="row">

@@ -1,0 +1,80 @@
+<?php
+$this->layout('../layouts/layout',
+[
+    'titles'=> 'FBMinimarket | Admin'
+]);
+?>
+<?php $this->push('styles');?>
+<!-- //link de css  -->
+<?php $this->end(); ?>
+
+<?php $this->push('contents');?>
+<div class="container">
+<h2>Administración</h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/categoria.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."categoria" ?>" class="btn btn-primary">CATEGORIA</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/marca.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."marca" ?>" class="btn btn-primary">MARCA</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/unidades.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."unidad" ?>" class="btn btn-primary">UNIDADES</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/cliente.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."cliente" ?>" class="btn btn-primary">CLIENTE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/usuario.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."usuario" ?>" class="btn btn-primary">USUARIO</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/tipouser.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."usuarioTipo" ?>" class="btn btn-primary">TIPO USUARIO</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card text-center" style="width: 30rem;">
+                <img src=" <?=URL.'images/admin/producto.png'?>" class="imgadmin " alt="...">
+                <div class="card-body">
+                    <a href="<?=URL."producto" ?>" class="btn btn-primary">PRODUCTO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<?php $this->end(); ?>
+
+<?php $this->push('scripts');?>
+<!-- //link js  -->
+<?php $this->end(); ?>
