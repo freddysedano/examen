@@ -95,8 +95,7 @@ class UsuarioController extends controller
             'direccion'=>'min_len,5|max_len,50',
             'usuario'=>'required|alpha_numeric|max_len,100|min_len,6',
             'clave'=>'required|max_len,100|min_len,6',
-            'direccion'=>'required|valid_email',
-            'correo'=>'required|max_len,50',
+            'correo'=>'required|valid_email'
         ]);
         $valid_data=$gump->run($datos);
         if ($gump->errors()) {
